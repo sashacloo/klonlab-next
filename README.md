@@ -1,6 +1,5 @@
 # Klonlab Creative Studio
 
-An immersive 3D web experience for a creative digital studio, featuring a video game-like navigation system where users can explore different rooms and content areas through a virtual tunnel interface.
 
 ## ✨ Features
 

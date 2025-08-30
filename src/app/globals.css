@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111111;
 }
 
 @theme inline {
@@ -12,11 +12,40 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+} */
+
+@font-face {
+  font-family: 'Flow';
+  src: url('/fonts/Flow.woff2') format('woff2'),
+       url('/fonts/Flow.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Flow-Outline';
+  src: url('/fonts/Flow-Outline.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.flow,
+.flow-outline {
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: -0.1em;
+}
+.flow {
+  font-family: 'Flow', sans-serif;
+}
+
+.flow-outline {
+  font-family: 'Flow-Outline', sans-serif;
 }
 
 body {

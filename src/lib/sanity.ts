@@ -1,7 +1,7 @@
-import { createClient } from '@sanity/client'
+import { createClient as createSanityClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
-export const client = createClient({
+export const client = createSanityClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'your-project-id',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   useCdn: true,
@@ -12,6 +12,32 @@ const builder = imageUrlBuilder(client)
 
 export function urlFor(source: any) {
   return builder.image(source)
+}
+
+export async function sanityFetch<QueryResponse>({
+  query,
+  params = {},
+  tags,
+}: {
+  query: string
+  params?: Record<string, unknown>
+  tags?: string[]
+}): Promise<QueryResponse> {
+  return client.fetch<QueryResponse>(query, params, {
+    next: { tags },
+  })
+}
+
+export function createClient(config: any) {
+  if (!config.projectId) {
+    throw new Error('Missing projectId')
+  }
+
+  return createSanityClient({
+    ...config,
+    useCdn: false,
+    apiVersion: '2023-05-03',
+  })
 }
 
 // Schema types for content

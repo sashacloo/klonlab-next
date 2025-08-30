@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface LandingPageProps {
   onEnterExperience: () => void
@@ -16,7 +16,7 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 overflow-hidden">
+    <div className="relative min-h-screen bg-gradient-to-br from-gray-200 via-purple-200 to-violet-200 overflow-hidden">
       {/* Background animation */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
@@ -47,7 +47,7 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
           ))}
         </div>
       )}
-
+      
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 text-center">
         <motion.div
@@ -58,7 +58,7 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
         >
           {/* Logo/Brand */}
           <motion.h1
-            className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tight"
+            className="flow-outline text-6xl md:text-[10vw] font-bold tracking-tight select-none"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
@@ -67,14 +67,13 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
           </motion.h1>
 
           <motion.div
-            className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed"
+            className="text-sm mb-12 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            <p className="mb-4">Creative Digital Studio</p>
-            <p className="text-lg text-gray-400">
-              Immersive experiences • Interactive design • Digital innovation
+            <p className="mb-4">
+              Interactive design — Immersive experiences
             </p>
           </motion.div>
 
@@ -88,7 +87,7 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
               onClick={onEnterExperience}
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
-              className="relative group px-12 py-4 text-xl font-semibold text-white border-2 border-white/30 rounded-full backdrop-blur-sm transition-all duration-300 hover:border-white/60 hover:bg-white/10"
+              className="relative group px-6 py-2 text-sm border rounded-full backdrop-blur-sm transition-all duration-300 cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -100,11 +99,11 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
                 transition={{ duration: 0.3 }}
               />
               
-              <span className="relative z-10 flex items-center gap-3">
-                Let's Go
+              <span className="relative z-10 flex items-center gap-1">
+                Let&apos;s Go
                 <motion.svg
-                  width="20"
-                  height="20"
+                  width="15"
+                  height="15"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -119,20 +118,20 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
               </span>
             </motion.button>
           </motion.div>
-
+          
           {/* Instruction text */}
-          <motion.p
+          {/* <motion.p
             className="mt-8 text-sm text-gray-500"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.5 }}
           >
             Enter an immersive 3D experience
-          </motion.p>
+          </motion.p> */}
         </motion.div>
 
         {/* Scroll indicator */}
-        <motion.div
+        {/* <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -149,11 +148,8 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
               transition={{ duration: 2, repeat: Infinity }}
             />
           </motion.div>
-        </motion.div>
+        </motion.div> */}
       </div>
-
-      {/* Grid overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px] pointer-events-none" />
     </div>
   )
 }

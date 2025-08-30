@@ -58,7 +58,7 @@ export default function Home() {
             >
               Entering Experience...
             </motion.div>
-            
+
             {/* Tunnel effect overlay */}
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
@@ -78,7 +78,7 @@ export default function Home() {
             className="absolute inset-0"
           >
             <Scene3D isActive={true} />
-            
+
             {/* Instructions overlay */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}

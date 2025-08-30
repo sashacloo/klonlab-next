@@ -159,7 +159,7 @@ function WebGLErrorBoundary({ children }: { children: React.ReactNode }) {
       <div className="fixed inset-0 z-50 bg-black flex items-center justify-center">
         <div className="text-white text-center p-8">
           <h2 className="text-2xl mb-4">WebGL Not Supported</h2>
-          <p className="mb-4">Your browser doesn't support WebGL or it's disabled.</p>
+          <p className="mb-4">Your browser doesn&apos;t support WebGL or it&apos;s disabled.</p>
           <p className="text-sm opacity-80">Please try a different browser or enable WebGL.</p>
         </div>
       </div>

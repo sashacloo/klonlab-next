@@ -28,7 +28,7 @@ export async function sanityFetch<QueryResponse>({
   })
 }
 
-export function createClient(config: Record<string, unknown>) {
+export function createClient(config: any) {
   if (!config.projectId) {
     throw new Error('Missing projectId')
   }

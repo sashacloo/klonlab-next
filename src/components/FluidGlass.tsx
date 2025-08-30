@@ -1,6 +1,5 @@
-/* eslint-disable react/no-unknown-property */
 import * as THREE from "three";
-import { useRef, useState, useEffect, memo, ReactNode } from "react";
+import { useRef, useState, useEffect, memo, ReactNode, useCallback } from "react";
 import {
   Canvas,
   createPortal,
@@ -82,6 +81,7 @@ interface ModeWrapperProps extends MeshProps {
   lockToBottom?: boolean;
   followPointer?: boolean;
   modeProps?: ModeProps;
+  [key: string]: unknown;
 }
 
 interface ZoomMaterial extends THREE.Material {
@@ -239,14 +239,14 @@ function NavItems({ items }: { items: NavItem[] }) {
     tablet: { max: 1023, spacing: 0.24, fontSize: 0.045 },
     desktop: { max: Infinity, spacing: 0.3, fontSize: 0.045 },
   };
-  const getDevice = () => {
+  const getDevice = useCallback(() => {
     const w = window.innerWidth;
     return w <= DEVICE.mobile.max
       ? "mobile"
       : w <= DEVICE.tablet.max
         ? "tablet"
         : "desktop";
-  };
+  }, []);
 
   const [device, setDevice] = useState<keyof typeof DEVICE>(getDevice());
 
@@ -359,10 +359,10 @@ function Typography() {
     tablet: { fontSize: 0.4 },
     desktop: { fontSize: 0.7 },
   };
-  const getDevice = () => {
+  const getDevice = useCallback(() => {
     const w = window.innerWidth;
     return w <= 639 ? "mobile" : w <= 1023 ? "tablet" : "desktop";
-  };
+  }, []);
 
   const [device, setDevice] = useState<keyof typeof DEVICE>(getDevice());
 

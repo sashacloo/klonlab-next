@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Text, Html } from '@react-three/drei'
+import { Text } from '@react-three/drei'
 import { RigidBody, CuboidCollider } from '@react-three/rapier'
 import * as THREE from 'three'
 

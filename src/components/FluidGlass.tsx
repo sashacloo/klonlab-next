@@ -254,7 +254,7 @@ function NavItems({ items }: { items: NavItem[] }) {
     const onResize = () => setDevice(getDevice());
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [getDevice]);
 
   const { spacing, fontSize } = DEVICE[device];
 
@@ -270,9 +270,11 @@ function NavItems({ items }: { items: NavItem[] }) {
 
   const handleNavigate = (link: string) => {
     if (!link) return;
-    link.startsWith("#")
-      ? (window.location.hash = link)
-      : (window.location.href = link);
+    if (link.startsWith("#")) {
+      window.location.hash = link;
+    } else {
+      window.location.href = link;
+    }
   };
 
   return (
@@ -368,7 +370,7 @@ function Typography() {
     const onResize = () => setDevice(getDevice());
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
-  }, []);
+  }, [getDevice]);
 
   const { fontSize } = DEVICE[device];
 

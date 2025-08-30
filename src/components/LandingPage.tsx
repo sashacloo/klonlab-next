@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface LandingPageProps {
   onEnterExperience: () => void
@@ -100,7 +100,7 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
               />
               
               <span className="relative z-10 flex items-center gap-1">
-                Let's Go
+                Let&apos;s Go
                 <motion.svg
                   width="15"
                   height="15"

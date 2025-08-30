@@ -18,11 +18,36 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-gray-200 via-purple-200 to-violet-200 overflow-hidden">
       {/* Background animation */}
-      {/* <div className="absolute inset-0">
+      <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
         <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,rgba(255,255,255,0.1)_0deg,transparent_60deg,transparent_300deg,rgba(255,255,255,0.1)_360deg)]" />
-      </div> */}
+      </div>
 
+      {/* Floating particles - only render on client */}
+      {isMounted && (
+        <div className="absolute inset-0">
+          {Array.from({ length: 50 }, (_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full opacity-20"
+              initial={{
+                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+              }}
+              animate={{
+                y: [null, -100],
+                opacity: [0.2, 0, 0.2],
+              }}
+              transition={{
+                duration: Math.random() * 10 + 10,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+          ))}
+        </div>
+      )}
+      
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 text-center">
         <motion.div
@@ -48,7 +73,7 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
             transition={{ duration: 1, delay: 0.5 }}
           >
             <p className="mb-4">
-              Creative Digital Studio — Interactive design — Immersive experiences — Digital innovation
+              Interactive design — Immersive experiences
             </p>
           </motion.div>
 
@@ -93,7 +118,37 @@ export function LandingPage({ onEnterExperience }: LandingPageProps) {
               </span>
             </motion.button>
           </motion.div>
+          
+          {/* Instruction text */}
+          {/* <motion.p
+            className="mt-8 text-sm text-gray-500"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.5 }}
+          >
+            Enter an immersive 3D experience
+          </motion.p> */}
         </motion.div>
+
+        {/* Scroll indicator */}
+        {/* <motion.div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2 }}
+        >
+          <motion.div
+            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+            animate={{ borderColor: ['rgba(255,255,255,0.3)', 'rgba(255,255,255,0.6)', 'rgba(255,255,255,0.3)'] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <motion.div
+              className="w-1 h-3 bg-white rounded-full mt-2"
+              animate={{ y: [0, 12, 0], opacity: [1, 0, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </motion.div>
+        </motion.div> */}
       </div>
     </div>
   )
